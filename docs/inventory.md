@@ -79,8 +79,9 @@ hover-archive / btw）。**未收录**：
 5. **兼容门不是风险点**：用 DSH 自带的 semver 逐个实测这 20 个包对 `0.2.0-rc.2` 的
    `@deepseek-ai/dsh*` peer 范围，**无一被拒**。
 6. **背景的"样子"是数据不是插件**：`~/.dsh/.dsh-any-background-data/`（`theme-config.json`
-   + `wallpaper.jpg`）。插件装了不等于样式回来了；any-background 的 `dsh-any-theme.json`
-   自包含导出（含壁纸）才是迁移路径。
+   + `wallpaper.jpg`）。插件装了不等于样式回来了。本 bundle 的做法是把这两个文件放进
+   `background/`，由 `scripts/restore-background.sh` 铺回去；插件的 `dsh-any-theme.json`
+   自包含导出（含壁纸、支持视频）是等价的另一条路。
 
 ## 4. 顺带发现（`dsh-fft-bundle` 仓）
 

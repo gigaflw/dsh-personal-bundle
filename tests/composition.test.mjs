@@ -116,10 +116,16 @@ describe('metadata the plugin manager reads', () => {
     // entry is silent and the installed bundle is unusable.
     assert.deepEqual(
       [...manifest.files].sort(),
-      ['cordis.patch.yml', 'icon.svg', 'index.js', 'locale/*.json'],
+      ['background/*', 'cordis.patch.yml', 'icon.svg', 'index.js', 'locale/*.json', 'scripts/*.sh'],
     )
     for (const file of ['cordis.patch.yml', 'icon.svg', 'index.js']) {
       assert.ok(statSync(resolve(root, file)).isFile(), `${file} must exist to be shipped`)
     }
+    // The wallpaper and its restore script travel inside the package: an
+    // install through the plugin manager never clones the repository, so
+    // anything left outside `files` simply is not there on the new machine.
+    assert.ok(statSync(resolve(root, 'background/theme-config.json')).isFile())
+    assert.ok(statSync(resolve(root, 'background/wallpaper.jpg')).isFile())
+    assert.ok(statSync(resolve(root, 'scripts/restore-background.sh')).isFile())
   })
 })

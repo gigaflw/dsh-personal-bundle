@@ -14,7 +14,9 @@
     "index.js",
     "icon.svg",
     "locale/*.json",
-    "cordis.patch.yml"
+    "cordis.patch.yml",
+    "background/*",
+    "scripts/*.sh"
   ],
   "icon": "icon.svg",
   "scripts": {

@@ -1,0 +1,125 @@
+{
+  "color": [
+    199.0909090909091,
+    0.3437500000000001,
+    0.12549019607843137
+  ],
+  "opacities": {
+    "bg": 0.3,
+    "sidebar": 1,
+    "card": 0.8,
+    "input": 0.8
+  },
+  "blurs": {
+    "bg": 0,
+    "sidebar": 0,
+    "card": 0,
+    "settings": 0,
+    "chat": 0,
+    "trajectory": 0,
+    "input": 0,
+    "panel": 0,
+    "produced": 0,
+    "header": 0
+  },
+  "strokes": {
+    "bg": {
+      "width": 0,
+      "color": "auto",
+      "customColor": "#808080"
+    },
+    "sidebar": {
+      "width": 0,
+      "color": "auto",
+      "customColor": "#808080"
+    },
+    "card": {
+      "width": 0,
+      "color": "auto",
+      "customColor": "#808080"
+    },
+    "settings": {
+      "width": 0,
+      "color": "auto",
+      "customColor": "#808080"
+    },
+    "chat": {
+      "width": 0,
+      "color": "auto",
+      "customColor": "#808080"
+    },
+    "trajectory": {
+      "width": 0,
+      "color": "auto",
+      "customColor": "#808080"
+    },
+    "input": {
+      "width": 0,
+      "color": "auto",
+      "customColor": "#808080"
+    },
+    "panel": {
+      "width": 0,
+      "color": "auto",
+      "customColor": "#808080"
+    },
+    "produced": {
+      "width": 0,
+      "color": "auto",
+      "customColor": "#808080"
+    },
+    "header": {
+      "width": 0,
+      "color": "auto",
+      "customColor": "#808080"
+    }
+  },
+  "settingsOpacity": 0.9,
+  "wallpaperOpacity": 1,
+  "blur": 0,
+  "bgState": {
+    "zoom": 1.2686610929785187,
+    "x": 0.49333364246437006,
+    "y": 0.5296743628593972,
+    "iw": 1200,
+    "ih": 740
+  },
+  "videoBgState": {
+    "zoom": 1,
+    "x": 0,
+    "y": 0,
+    "iw": 0,
+    "ih": 0
+  },
+  "backgroundType": "image",
+  "bgMode": "fit",
+  "videoMime": null,
+  "fontMime": null,
+  "fontEnabled": true,
+  "generatedBg": null,
+  "regenerateOnReload": false,
+  "chatTextOpacity": 0.5,
+  "trajectoryOpacity": 1,
+  "panelOpacity": 0.8,
+  "producedOpacity": 1,
+  "headerOpacity": 1,
+  "profiles": [],
+  "rotation": {
+    "enabled": false,
+    "mode": "shuffle",
+    "interval": "daily",
+    "current": 0,
+    "items": [],
+    "lastRotate": null
+  },
+  "schedule": {
+    "enabled": false,
+    "mode": "time",
+    "dayProfile": null,
+    "nightProfile": null,
+    "dayStart": "07:00",
+    "nightStart": "19:00"
+  },
+  "schemeOverride": "auto",
+  "activeProfile": null
+}

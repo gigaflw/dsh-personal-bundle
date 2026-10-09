@@ -14,8 +14,8 @@
 | [dsh-hover-archive](https://github.com/zhifengjiang/dsh-hover-archive) | 0.1.0 | 悬停归档 |
 | [@michengai/dsh-btw](https://www.npmjs.com/package/@michengai/dsh-btw) | 0.1.15 | BTW 补充说明 |
 
-> 本仓只装插件，不含插件数据（壁纸、主题、配色都留在各自插件的存储里）。
-> any-background 的"我的样子"用它的**导出 `dsh-any-theme.json`**（含壁纸）带走，在新机导入。
+壁纸与它的构图参数也在这个仓里（`background/`），见下面的「背景还原」——
+插件装上了不等于背景回来了，这两件事分开做。
 
 ## 使用方式
 
@@ -41,6 +41,34 @@ github:gigaflw/dsh-personal-bundle
 
 - 更新：重贴同一 spec（git spec 取默认分支 HEAD）。
 - 卸载：插件管理里移除该 bundle，六个插件随之卸载。
+
+## 背景还原
+
+any-background 的背景就是数据目录里的两个文件，没有数据库：
+
+| 文件 | 内容 |
+|---|---|
+| `background/theme-config.json` | 配色、透明度、模糊、构图（`bgState` 的 `x/y/zoom/iw/ih`） |
+| `background/wallpaper.jpg` | 图片本体，1200×740（换成视频时是 `wallpaper.mp4` 等） |
+
+**路线 A — 一条命令（推荐）**，把两个文件铺到 `$DSH_HOME/.dsh-any-background-data/`。
+壁纸和脚本都在插件包里，所以**装完 bundle 就能跑**，不用 clone 仓库：
+
+```bash
+sh ~/.dsh/profiles/<profile>/node_modules/dsh-personal-bundle/scripts/restore-background.sh
+```
+
+从 clone 出来的仓库跑也可以：`./scripts/restore-background.sh`（仓库里带可执行位）。
+
+> 前缀 `sh` 不是多余的：npm 打包会把可执行位抹成 644（git 安装保留 755），`sh <脚本>` 两条路都成立。
+
+先退出 DSH（运行中的客户端把配置放在内存里，下次改动会覆盖回去）；已存在的文件会被挪成
+`*.bak.<时间戳>`，不会直接覆盖；脚本按 `$DSH_HOME`（空值视为未设、`~/` 展开）定位目标目录，
+与宿主自身的一致。
+
+**路线 B — 走插件自己的导入**，适合你手头已有 `dsh-any-theme.json`（含视频的自包含包）：
+any-background 设置卡 →「导入配置」→ 选文件。插件导出格式是
+`{version, config, wallpaper: data:image/…, video: data:video/…}`，和路线 A 是同一份状态。
 
 ## 开发方式
 
