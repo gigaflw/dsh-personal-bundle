@@ -1,0 +1,14 @@
+# Local development settings, mirroring what a DSH profile uses so that a
+# local install behaves like the real one. These are NOT inherited by
+# consumers: a profile installing this bundle as a git dependency keeps its own
+# `pnpm-workspace.yaml`. The one setting the CONSUMER must add
+# (`blockExoticSubdeps: false`, for the two commit-pinned git dependencies) is
+# documented in README.md.
+packages:
+  - .
+
+nodeLinker: hoisted
+# The host supplies every @deepseek-ai/dsh* peer at runtime; resolving them from
+# the public registry would fail, since the 0.2.0-rc.2 line is published under
+# the `next` tag rather than as `latest`.
+autoInstallPeers: false

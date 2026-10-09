@@ -1,0 +1,45 @@
+{
+  "name": "dsh-personal-bundle",
+  "version": "0.1.0",
+  "description": "Personal DSH desktop plugin set — background, sidebar, annotation, hover archive, context meter and BTW, installed and mounted by one spec.",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "index.js",
+    "icon.svg",
+    "locale/*.json",
+    "cordis.patch.yml"
+  ],
+  "icon": "icon.svg",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@changfenhuang/dsh-annotation": "1.4.11",
+    "@michengai/dsh-btw": "0.1.15",
+    "dsh-any-background": "github:Tkingxiao/dsh-any-background#1a9292d10123b62d07dafc757d16bcd5dcac705e",
+    "dsh-better-sidebar": "0.24.1",
+    "dsh-context": "0.63.0",
+    "dsh-hover-archive": "github:zhifengjiang/dsh-hover-archive#430491ab1e36db6019a7d6d11b2f7506e5c2915d"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "engines": {
+      "dsh": ">=0.2.0-rc.2"
+    }
+  },
+  "devDependencies": {
+    "js-yaml": "^4.3.2"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  }
+}

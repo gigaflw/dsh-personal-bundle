@@ -1,0 +1,40 @@
+# dsh-personal-bundle — composition patch layer.
+#
+# Installed with one spec, then mounted automatically:
+#
+#   dsh plugin --profile <name> add github:<owner>/dsh-personal-bundle
+#
+# Every row below is a VERBATIM copy of the row its own package inserts from
+# its `cordis.patch.yml`. The copy is not an optimization: the loader composes
+# only the layers named in `dsh.profile.bundles` and never loads a dependency's
+# own patch transitively, so the six packages declared in `dependencies` would
+# sit in `node_modules` with their rows dead. `tests/mirrored-rows.test.mjs`
+# diffs each row against the installed package, so an upstream edit fails this
+# repo's test run instead of silently shipping a stale row.
+#
+# ONE ID, ONE ENABLED LAYER. Two enabled layers that insert the same row id
+# make the loader refuse the whole tree ("duplicate loader entry id") — the
+# profile does not boot. Install this bundle on a profile that does not already
+# select those plugins as standalone bundles; the bundle installs their packages
+# itself, so it is also the only thing declaring them.
+#
+# Row order: the wallpaper layer first, then the sidebar, then the plugins that
+# register into the sidebar or read the wallpaper's colors.
+- insert:
+    - id: dsh-any-background
+      name: 'dsh-any-background'
+    - id: better-sidebar
+      name: 'dsh-better-sidebar'
+      # Copied from dsh-better-sidebar's own patch: back this row off when
+      # another enabled entry already mounts the package under a different id
+      # (an aggregate bundle that precedes this one). `ctx.loader` is the
+      # loader context the patch expression is evaluated in.
+      disabled: !!js "[...ctx.loader.entries()].some((e) => e.options.name === 'dsh-better-sidebar' && e.options.id !== 'better-sidebar' && !e.disabled)"
+    - id: dsh-context
+      name: dsh-context
+    - id: dsh-annotation
+      name: '@changfenhuang/dsh-annotation'
+    - id: dsh-hover-archive
+      name: 'dsh-hover-archive'
+    - id: michengai-btw
+      name: '@michengai/dsh-btw'
